@@ -11,9 +11,11 @@ class Cell:
         self.alive = alive
 
     def update(self, n_count: int, stack: list[tuple]) -> None:
-        if self.alive:  # any living cell with less than 2 or more than 3 neighbours die
+        # any living cell with less than 2 or more than 3 neighbours die
+        if self.alive:
             if n_count < 2 or n_count > 3:
                 stack.append((self.x, self.y))
-        else:  # any dead cell with exactly 3 neighbours comes to life
+        # any dead cell with exactly 3 neighbours comes to life
+        else:
             if n_count == 3:
                 stack.append((self.x, self.y))

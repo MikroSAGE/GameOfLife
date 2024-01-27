@@ -2,6 +2,10 @@ import pygame
 import random
 from grid import Grid
 
+GRID_SIZE = (128, 72)
+INITIAL_CONFIG = []
+GENERATIONS = 0
+
 
 def display(screen: pygame.display, grid: Grid, cell_size: int) -> None:
     y = 0
@@ -30,10 +34,10 @@ def main():
     clock = pygame.time.Clock()
     running = True
 
-    width, height = 128, 72
-    initial_config = [(random.randint(0, width-1), random.randint(0, height-1)) for _ in range(2000)]
+    width, height = GRID_SIZE
+    random_config = [(random.randint(0, width-1), random.randint(0, height-1)) for _ in range(2000)]
     new_grid = Grid(width, height)
-    new_grid.toggle_cells(initial_config)
+    new_grid.set_configuration(INITIAL_CONFIG if INITIAL_CONFIG else random_config)
 
     while running:
         for event in pygame.event.get():

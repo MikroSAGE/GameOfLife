@@ -14,7 +14,7 @@ class Grid:
         self.board = [[Cell(x, y, False) for x in range(width)] for y in range(height)]
         self.stack = []
 
-    def toggle_cells(self, loc: list[tuple]) -> None:
+    def set_configuration(self, loc: list[tuple]) -> None:
         for i, j in loc:
             self.board[j][i].alive = not self.board[j][i].alive
 
